@@ -7,6 +7,25 @@
   pointer-events: none;
 }
 
+header {
+  margin: 20px auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.dark-mode {
+  background: black;
+  color: white
+}
+
+button {
+  margin: 4px auto;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100%;
+  border: 1px solid #ccc;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

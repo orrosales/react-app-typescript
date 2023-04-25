@@ -1,24 +1,50 @@
-import React from 'react';
-import logo from './logo.svg';
+import {useEffect, useState} from 'react';
 import './App.css';
+import List from './components/List';
+import Form from './components/Form'
+import {Sub} from './types'
+
+const INITIAL_SUB = [    
+{
+  nick:'dapelu',
+  subMonts: 33,
+  avatar:'https://i.pravatar.cc/150?u=dapelu',
+  description:'Asistente'
+},
+{
+  nick:'fran',
+  subMonts: 32,
+  avatar:'https://i.pravatar.cc/150?u=fran',
+}]
+ 
 
 function App() {
+  const [subs, setSubs] = useState<Array<Sub>>([])
+
+  const toggleClass = () => {
+    document.documentElement.classList.toggle('dark-mode');
+  }
+
+  useEffect(()=> {
+
+    setSubs(INITIAL_SUB)
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <input
+          type="checkbox"
+          id="dark-mode"
+          onClick={toggleClass}
+        />
+        <h4>Dark mode</h4>
       </header>
+      <main>
+        <h1>Card List</h1>
+        <List subs= {subs} />
+        <Form onNewSub={setSubs}/>
+      </main>
     </div>
   );
 }
